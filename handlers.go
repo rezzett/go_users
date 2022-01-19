@@ -6,22 +6,11 @@ import (
 	"net/http"
 )
 
-type User struct {
-	Name             string
-	Age              uint16
-	Money            int16
-	Grades, Happines float64
-	Hobbies          []string
-}
-
-func (u *User) Info() string {
-	return fmt.Sprintf("Name: %s\nAge: %d\nMoney: %d", u.Name, u.Age, u.Money)
-}
-
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	alyx := User{"Alyx", 25, 280, 5.0, 0.9, []string{"Travel", "Sience", "Sport"}}
+	users := AllUsers(db)
 	tmpl, _ := template.ParseFiles("./templates/home.html")
-	tmpl.Execute(w, alyx)
+
+	tmpl.Execute(w, users)
 }
 
 func ContactsPage(w http.ResponseWriter, r *http.Request) {
