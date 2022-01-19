@@ -8,7 +8,10 @@ import (
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	Users := AllUsers(db)
-	tmpl, _ := template.ParseFiles("./templates/home.html")
+	tmpl, err := template.ParseFiles("./templates/home.html")
+	if err != nil {
+		panic(err)
+	}
 
 	tmpl.Execute(w, Users)
 }
