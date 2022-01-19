@@ -24,14 +24,5 @@ func main() {
 	}
 	defer db.Close()
 
-	/* insert new user
-	 *result, err := db.Query("INSERT INTO `users` (`name`, `age`) VALUES('Issac', 56)")
-	 *if err != nil {
-	 *    panic(err)
-	 *}
-	 *defer result.Close()
-	 */
-
 	handleRequsts()
-
 }

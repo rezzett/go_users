@@ -1,4 +1,3 @@
-// Package dd:w
 package main
 
 import "database/sql"
@@ -9,9 +8,9 @@ type User struct {
 	Age  uint16 `json:"age"`
 }
 
-func AllUsers(DB *sql.DB) []User {
+func AllUsers(db *sql.DB) []User {
 	var users []User
-	res, err := DB.Query("SELECT `id`, `name`, `age` FROM `users`")
+	res, err := db.Query("SELECT `id`, `name`, `age` FROM `users`")
 	if err != nil {
 		panic(err)
 	}
@@ -22,8 +21,15 @@ func AllUsers(DB *sql.DB) []User {
 		if err != nil {
 			panic(err)
 		}
-		//fmt.Printf("%d)User: %s - %d\n", user.Id, user.Name, user.Age)
 		users = append(users, user)
 	}
 	return users
+}
+
+func InsertUser(db sql.DB, name string, age uint) {
+	result, err := db.Query("INSERT INTO `users` (`name`, `age`) VALUES('Issac', 56)")
+	if err != nil {
+		panic(err)
+	}
+	defer result.Close()
 }

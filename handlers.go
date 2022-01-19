@@ -7,10 +7,10 @@ import (
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	users := AllUsers(db)
+	Users := AllUsers(db)
 	tmpl, _ := template.ParseFiles("./templates/home.html")
 
-	tmpl.Execute(w, users)
+	tmpl.Execute(w, Users)
 }
 
 func ContactsPage(w http.ResponseWriter, r *http.Request) {

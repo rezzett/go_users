@@ -23,14 +23,11 @@
 
       <main class="px-3">
         <h1>Home</h1>
-        <p class="lead">User: {{.Name}}<br>Money: {{.Money}}<br>Age: {{.Age}}<br></p>
-        <h4>Hobbies:</h4>
-        {{ range .Hobbies }}
-            <p class="lead">{{ . }}</p>
+        {{ range . }}
+        <p class="lead">User: {{ .Name }}, Age: {{ .Age }}, Id: {{ .Id }}</p>
         {{ else }}
-            <p class="lead">No hobbies</p>
+            <p class="lead">No users</p>
         {{ end }}
-            
         <p class="lead">
           <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
         </p>
