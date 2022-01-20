@@ -1,37 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" class="h-100" data-darkreader-mode="dynamic" data-darkreader-scheme="dark" >
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/examples/cover/cover.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-start mb-0">Simple Go</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Contact</a>
-            <a class="nav-link" href="#">About</a>
-          </nav>
-        </div>
-      </header>
+{{template "base" .}}
 
-      <main class="px-3">
-        {{ range . }}
+{{define "title"}} Home {{end}}
+
+{{define "main"}}
+    {{ range . }}
         <p class="lead">User: {{ .Name }}, Age: {{ .Age }}, Id: {{ .Id }}</p>
-        {{ else }}
+    {{ else }}
         <p class="lead">No users</p>
-        {{ end }}
-      </main>
-
-      <footer class="mt-auto text-white-50">
-        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
-      </footer>
-    </div>
-</body>
-</html>
+    {{ end }}
+{{end}}

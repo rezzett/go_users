@@ -1,21 +1,23 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	Users := AllUsers(db)
-	tmpl, err := template.ParseFiles("./templates/home.html")
-	if err != nil {
-		panic(err)
-	}
-
+	files := []string{"./templates/home.html", "./templates/base.html"}
+	tmpl, err := template.ParseFiles(files...)
+	CheckErr(err)
 	tmpl.Execute(w, Users)
 }
 
 func ContactsPage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h2>ContactsPage</h2>")
+	//fmt.Fprintf(w, "<h2>ContactsPage</h2>")
+	files := []string{"./templates/contacts.html", "./templates/base.html"}
+	t, err := template.ParseFiles(files...)
+	CheckErr(err)
+	Title := "contacts"
+	t.Execute(w, Title)
 }

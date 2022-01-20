@@ -11,16 +11,12 @@ type User struct {
 func AllUsers(db *sql.DB) []User {
 	var users []User
 	res, err := db.Query("SELECT `id`, `name`, `age` FROM `users`")
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 
 	for res.Next() {
 		var user User
 		err := res.Scan(&user.Id, &user.Name, &user.Age)
-		if err != nil {
-			panic(err)
-		}
+		CheckErr(err)
 		users = append(users, user)
 	}
 	return users
@@ -28,8 +24,6 @@ func AllUsers(db *sql.DB) []User {
 
 func InsertUser(db sql.DB, name string, age uint) {
 	result, err := db.Query("INSERT INTO `users` (`name`, `age`) VALUES('Issac', 56)")
-	if err != nil {
-		panic(err)
-	}
+	CheckErr(err)
 	defer result.Close()
 }
